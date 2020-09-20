@@ -63,5 +63,24 @@ def addLabels(args):
 
     return label
 
-###### card functions
 
+
+
+###### comment functions
+
+def addComment(args):
+    if len(args) < 2:
+        return "Missing param. Please give the card ID and text"
+
+    url = f"https://api.trello.com/1/cards/{args[0]}/actions/comments"
+
+    query = {"key": key, "token": token, 'text': args[1]}
+
+    response = requests.request(
+        "POST", url, 
+        params=query
+        )
+
+    comment = response.json()
+
+    return comment
