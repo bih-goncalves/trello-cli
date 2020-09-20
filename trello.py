@@ -5,10 +5,10 @@ key = os.environ['KEY']
 token = os.environ['TOKEN']
 
 # default
-def default():
-    print('Sorry, we dont have this feature yet')
+def default(args):
+    return 'Sorry, we dont have this feature yet'
 
-# list functions
+###### list functions
 
 def getLists(board_id):
     if len(board_id) < 1:
@@ -27,7 +27,7 @@ def getLists(board_id):
 
     return lists
 
-# label functions
+####### labels functions
 
 def getLabels(board_id):
     if len(board_id) < 1:
@@ -46,5 +46,22 @@ def getLabels(board_id):
 
     return labels
 
-# card functions
+def addLabels(args):
+    if len(args) < 2:
+        return "Missing param. Please give the card ID and labelID"
+
+    url = f"https://api.trello.com/1/cards/{args[0]}/idLabels"
+
+    query = {"key": key, "token": token, "value": args[1]}
+
+    response = requests.request(
+        "POST", url, 
+        params=query
+        )
+
+    label = response.json()
+
+    return label
+
+###### card functions
 
