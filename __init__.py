@@ -8,11 +8,11 @@ options = {
       "delete": trello.default
   },
   "cards": {
-      "create": trello.default ,
+      "create": trello.createCard ,
       "ls": trello.default ,
       "delete": trello.default ,
-      "comment": trello.default ,
-      "categorize": trello.default
+      "comment": trello.addComment ,
+      "categorize": trello.addLabels
   },
   "labels": {
       "create": trello.default ,
@@ -38,7 +38,7 @@ else:
     quit()
 
 # check for second option - method
-if (len(args) > 2) and (args[2] in opt1.keys()):
+if (len(args) > 3) and (args[2] in opt1.keys()):
     opt2 = opt1[args[2]]
 else:
     print("Sorry, we don't have this option. Instead, try to use: ")
