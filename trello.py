@@ -4,6 +4,10 @@ import os
 key = os.environ['KEY']
 token = os.environ['TOKEN']
 
+# default
+def default():
+    print('Sorry, we dont have this feature yet')
+
 # list functions
 
 def getLists(board_id):
