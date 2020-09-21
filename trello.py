@@ -79,7 +79,7 @@ def createCard(args):
             l3.append(item['name'])
         
         if label not in l3:
-            return "Sorry, this labels doesn't exist. Please create before using."
+            return "Sorry, this label doesn't exist. Please create before using."
         else:
             label = labels[l3.index(label)]['id']
 
@@ -90,7 +90,7 @@ def createCard(args):
         comment = args.pop(index) # get value of comment
 
     if len(args) < 4:
-        return "Missing param. Please give the board ID, list number, card name and card description"
+        return "Missing param. Please give the board ID, column number, card name and card description"
 
     # check the list ID
     lists = getLists([args[0]])
@@ -125,7 +125,7 @@ def createCard(args):
 
 def addComment(args):
     if len(args) < 2:
-        return "Missing param. Please give the card ID and text"
+        return "Missing param. Please give the card ID and comment's text"
 
     url = f"https://api.trello.com/1/cards/{args[0]}/actions/comments"
 
